@@ -2,16 +2,16 @@ import { createSlice } from '@reduxjs/toolkit';
 import data from '../../products.json';
 
 const initialState = {
-  products: data,
-  cart: JSON.parse(localStorage.getItem('sopping-cart')) || [],
-  open: false,
+  products: data,//полный продукт
+  cart: JSON.parse(localStorage.getItem('sopping-cart')) || [],//корзина
+  open: false,//модальный окно
 }
 
 export const productSlices = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addToCart: (state, action) => {//карзинага кошотурган функция
+    addToCart: (state, action) => {//list.js тен --> карзинага кошотурган функция
       const newItem = state.products.find(item=>item.id===action.payload);
       state.cart = [newItem, ...state.cart]
       //find - ошол IDни тандайт
@@ -20,11 +20,11 @@ export const productSlices = createSlice({
       state.cart = state.cart.filter(item => item.id !== action.payload);
     },
     openToggleModal:(state, action)=> {
-      state.open = action.payload
+      state.open = action.payload // true или false
     },
-    removeCart:(state) => {
-      localStorage.removeItem('sopping-cart')
-      state.cart = []
+    removeCart:(state) => {//оформление заказа болгодон кийин
+      localStorage.removeItem('sopping-cart')//хранилища очуробуз
+      state.cart = [] // кайра пустой массив кылабыз
     }
   },
 })

@@ -41,7 +41,7 @@ const handleChange = (event) => {
 }
 
 const handleClick =()=> {
-  postOrderProduct(form)//formду полный киргиздик
+  postOrderProduct(form)//пропстан келгенге formду полный киргиздик
   setTimeout(()=>{
     dispatch(openToggleModal(false))//оформить басканда модальн окно жабылат
     dispatch(removeCart())//фунциясында очистка пустой массив болот жана локалсторедж удалить болот
@@ -55,6 +55,7 @@ const handleClick =()=> {
         keepMounted
         open={open}//озу ушундай жазылат 
         onClose={() => dispatch(openToggleModal(false))}
+        //onClose - модальный окнодон башка жерине мышка менен жазсан очоберет
         aria-labelledby="keep-mounted-modal-title"
         aria-describedby="keep-mounted-modal-description"
       >
@@ -67,7 +68,7 @@ const handleClick =()=> {
               label="Adress" 
               variant="outlined"
               onChange={handleChange} />
-            {/* TextField - материал ЮАЙ дан алдык */}
+            {/* TextField - Input  материал ЮАЙ дан алдык */}
             <TextField 
               id="outlined-basic" 
               value={form.phone}
